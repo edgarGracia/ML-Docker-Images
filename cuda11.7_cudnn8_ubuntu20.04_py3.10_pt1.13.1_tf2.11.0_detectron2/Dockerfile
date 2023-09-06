@@ -18,9 +18,9 @@ WORKDIR /home/user
 RUN sed -i '/#force_color_prompt=yes/c\force_color_prompt=yes' /home/user/.bashrc
 
 # Install Python 3.10
-RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y software-properties-common
+RUN sudo apt-get install -y software-properties-common
 RUN sudo add-apt-repository --yes ppa:deadsnakes/ppa
-RUN sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3.10 python3.10-distutils python3.10-dev python3.10-venv
+RUN sudo apt-get install -y python3.10 python3.10-distutils python3.10-dev python3.10-venv
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 RUN export PATH=/home/user/.local/bin:$PATH
 
