@@ -1,5 +1,9 @@
 # Ubuntu 20.04 | cuda 11.7 | cudnn 8 | Python 3.10 | torch 1.13.1 | tensorflow 2.11.0 | detectron2
 FROM nvidia/cuda:11.7.0-cudnn8-devel-ubuntu20.04
+
+# Set non interactive
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y curl git wget ninja-build nano sudo ca-certificates build-essential
 
