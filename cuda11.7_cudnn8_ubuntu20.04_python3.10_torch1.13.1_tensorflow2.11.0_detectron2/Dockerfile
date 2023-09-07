@@ -1,14 +1,8 @@
 # Ubuntu 20.04 | Cuda 11.7 | Cudnn 8 | Python 3.10 | Torch 1.13.1 | TensorFlow 2.11.0 | Detectron2
-FROM nvidia/cuda:11.7.0-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu20.04
 
-<<<<<<< HEAD
 # Install dependencies
 ARG DEBIAN_FRONTEND=noninteractive
-=======
-# Set non interactive
-ARG DEBIAN_FRONTEND=noninteractive
-
->>>>>>> e3a4a5ebe5fab93820c7d1dad1948cb054007130
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y curl git wget ninja-build nano sudo ca-certificates build-essential ffmpeg \
     libsm6 libxext6 zip unzip
@@ -36,22 +30,6 @@ WORKDIR /home/user
 # Enable color prompt
 RUN sed -i '/#force_color_prompt=yes/c\force_color_prompt=yes' /home/user/.bashrc
 
-<<<<<<< HEAD
-=======
-# Install Python 3.10
-RUN sudo apt-get install -y software-properties-common
-RUN sudo add-apt-repository --yes ppa:deadsnakes/ppa
-RUN sudo apt-get install -y python3.10 python3.10-distutils python3.10-dev python3.10-venv
-RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
-RUN export PATH=/home/user/.local/bin:$PATH
-
-# Change the default python version
-RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1
-RUN sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
-RUN sudo update-alternatives --set python /usr/bin/python3.10
-RUN sudo update-alternatives --set python3 /usr/bin/python3.10
-
->>>>>>> e3a4a5ebe5fab93820c7d1dad1948cb054007130
 # Install python dependencies
 RUN python -m pip install --upgrade pip
 RUN python -m pip install --upgrade setuptools
