@@ -15,9 +15,7 @@ RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.8
 
 # Change the default python version
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
 RUN update-alternatives --set python /usr/bin/python3.8
-RUN update-alternatives --set python3 /usr/bin/python3.8
 
 # Create a non-root user
 ARG USER_ID=1000
